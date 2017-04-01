@@ -1,19 +1,12 @@
-
+const commonConfig = require('./webpack.common.js');
+// const path = require('path');
 const webpack = require('webpack');
-var path = require('path');
+const webpackMerge = require('webpack-merge');
+
 
 module.exports = function (env) {
-  return {
+  return webpackMerge(commonConfig(), {
     devtool: 'cheap-module-eval-source-map',
-    entry: {
-      index: './app/index.js',
-    },
-    output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, '/../dist/'),
-      publicPath: '/',
-      sourceMapFilename: '[name].map',
-    },
     devServer: {
       publicPath: '/',
       compress: true,
@@ -23,5 +16,5 @@ module.exports = function (env) {
         errors: true
       }
     }
-  }
+  })
 };

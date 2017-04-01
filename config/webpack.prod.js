@@ -1,19 +1,11 @@
-
+const commonConfig = require('./webpack.common.js');
+// const path = require('path');
 const webpack = require('webpack');
-var path = require('path');
+const webpackMerge = require('webpack-merge');
 
 module.exports = function (env) {
-  return {
-    entry: {
-      index: './app/index.js',
-    },
+  return webpackMerge(commonConfig(), {
     devtool: 'source-map',
-    output: {
-      filename: '[name].bundle.js',
-      path: path.join(__dirname, '/../dist/'),
-      publicPath: '/',
-      sourceMapFilename: '[name].map'
-    },
     plugins: [
       new webpack.LoaderOptionsPlugin({
         minimize: true,
@@ -32,5 +24,5 @@ module.exports = function (env) {
         sourceMap: 'source-map',
       })
     ]
-  }
+  })
 }

@@ -7,11 +7,13 @@ module.exports = {
   entry: {
     index: './app/index.js',
   },
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
+  // devtool: 'eval-source-map',
   // devtool: 'cheap-module-source-map',  // production
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     sourceMapFilename: '[name].map',
   },
   plugins:[
@@ -21,7 +23,7 @@ module.exports = {
     })
   ],
   devServer: {
-    publicPath: "/dist/",
+    publicPath: '/',
     compress: true,
     port: 8000
   }

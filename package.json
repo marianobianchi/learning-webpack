@@ -6,7 +6,7 @@
   "scripts": {
     "webpack": "webpack",
     "start": "webpack-dev-server --env=dev",
-    "build": "build:prod",
+    "build": "npm run build:prod",
     "build:dev": "webpack --env=dev --progress --profile --colors",
     "build:prod": "webpack --env=prod --progress --profile --colors"
   },

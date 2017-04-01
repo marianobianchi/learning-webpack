@@ -16,14 +16,14 @@ module.exports = function() {
         ]
     },
     output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, '../dist/'),
-      publicPath: '/',
+      filename: '[name].[hash].js',
+      path: path.resolve(__dirname, '../dist/assets/'),
       sourceMapFilename: '[name].map',
     },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor'
+        name: 'vendor',
+        filename: 'vendor.[hash].js'
       })
     ]
   }

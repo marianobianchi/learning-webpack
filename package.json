@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack",
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "start": "webpack-dev-server --env=dev",
+    "build": "build:prod",
+    "build:dev": "webpack --env=dev --progress --profile --colors",
+    "build:prod": "webpack --env=prod --progress --profile --colors"
   },
   "keywords": [],
   "author": "",

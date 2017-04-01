@@ -1,22 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function() {
   return {
     entry: {
-      index: './app/index.js',
       vendor: ['lodash'],
-      styles: './scss/main.scss',
+      index: './app/index.js',
     },
     module: {
         rules: [
           {
             test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-              //resolve-url-loader may be chained before sass-loader if necessary
-              use: ['css-loader', 'sass-loader?sourceMap']
-            })
+            use: ['style-loader', 'css-loader', 'sass-loader'],
           }
         ]
     },
@@ -28,12 +23,8 @@ module.exports = function() {
     },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-      }),
-      new ExtractTextPlugin({
-        filename: 'styles.bundle.css',
-        allChunks: true
-      }),
+        name: 'vendor'
+      })
     ]
   }
 }

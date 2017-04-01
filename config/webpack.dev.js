@@ -8,7 +8,7 @@ module.exports = function (env) {
   return webpackMerge(commonConfig(), {
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-      publicPath: '/',
+      publicPath: '/dist/',
       compress: true,
       port: 8000,
       overlay: {

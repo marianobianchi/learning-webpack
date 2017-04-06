@@ -6,7 +6,9 @@
   "scripts": {
     "webpack": "webpack",
     "start": "webpack-dev-server --env=dev",
-    "build": "npm run build:prod",
+    "serve:dist": "webpack-dev-server --content-base dist/ --env=prod --port 8000",
+    "clean:dist": "rm -rf dist",
+    "build": "npm run clean:dist && npm run build:prod",
     "build:dev": "webpack --env=dev --progress --profile --colors",
     "build:prod": "webpack --env=prod --progress --profile --colors"
   },

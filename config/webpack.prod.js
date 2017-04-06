@@ -8,19 +8,15 @@ module.exports = function (env) {
   return webpackMerge(commonConfig(), {
     devtool: 'source-map',
     output: {
-      publicPath: '/assets/',
+      publicPath: '/',
     },
     plugins: [
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
-      }),
       new webpack.optimize.UglifyJsPlugin({
         beautify: false,
         sourceMap: true,
       }),
       new HtmlWebpackPlugin({
-        filename: '../index.html',
+        filename: 'index.html',
         template: 'index.base.html'
       }),
     ]

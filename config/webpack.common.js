@@ -7,6 +7,7 @@ module.exports = function() {
     entry: {
       vendor: ['lodash'],
       index: './app/index.js',
+      styles: './scss/main.scss',
     },
     module: {
         rules: [

@@ -1,0 +1,14 @@
+---
+
+bootstrapVersion: 3
+
+styleLoaders:
+  - style-loader
+  - css-loader
+  - sass-loader
+
+extractStyles: true
+
+appStyles: ./scss/main.scss
+
+styles: true

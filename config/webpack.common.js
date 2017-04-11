@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = function() {
   return {
     entry: {
-      vendor: ['lodash'],
+      vendor: ['lodash', 'bootstrap-loader'],
       index: './app/index.js',
       styles: './scss/main.scss',
     },
@@ -25,9 +25,22 @@ module.exports = function() {
               },
               {
                 loader: 'sass-loader',
-              }
+              },
             ]),
-          }
+          },
+          // Bootstrap 3
+          {
+            test: /bootstrap-sass\/assets\/javascripts\//,
+            use: 'imports-loader?jQuery=jquery',
+          },
+          {
+            test: /\.(woff2?|svg)$/,
+            use: 'url-loader?limit=10000',
+          },
+          {
+            test: /\.(ttf|eot)$/,
+            use: 'file-loader',
+          },
         ]
     },
     output: {
@@ -37,7 +50,7 @@ module.exports = function() {
     },
     plugins: [
       new ExtractTextPlugin({ // define where to save the file
-        filename: 'styles/main.[contenthash].css',
+        filename: 'styles/[name].[contenthash].css',
         allChunks: true,
       }),
       new webpack.optimize.CommonsChunkPlugin(

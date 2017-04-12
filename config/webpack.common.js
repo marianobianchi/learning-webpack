@@ -5,7 +5,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = function() {
   return {
     entry: {
-      vendor: ['lodash', 'bootstrap-loader'],
+      vendor: [
+        'lodash',
+        'bootstrap-loader',
+        'angular',
+      ],
       index: './app/index.js',
       styles: './scss/main.scss',
     },
